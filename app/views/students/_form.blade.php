@@ -112,7 +112,7 @@
 
 <p>
 {{ Form::label('attendschurch_id', 'attendschurch_id: ') }}
-{{ Form::text('attendschurch_id') }}
+{{ Form::select('attendschurch_id', $church_options) }}
 </p>
 
 <p>

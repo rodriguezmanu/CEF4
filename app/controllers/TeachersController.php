@@ -20,7 +20,8 @@ class TeachersController extends BaseController {
 	public function create()
 	{
         $teacher = new Teacher();
-        return View::make('teachers.create')->with(array('route' => 'teachers.store', 'teacher' => $teacher, 'method' => 'POST'));
+		$school_options = array('' => 'Select One') + School::lists('name', 'id');
+        return View::make('teachers.create')->with(array('route' => 'teachers.store', 'teacher' => $teacher, 'method' => 'POST', 'school_options' => $school_options));
 	}
 
 	/**
@@ -69,7 +70,8 @@ class TeachersController extends BaseController {
         if (! $teacher) {
             echo "blank";
         } else {
-            return View::make('teachers.edit')->with(array('route' => ['teachers.update', $id], 'teacher' => $teacher, 'method' => 'PUT'));
+			$school_options = array('' => 'Select One') + School::lists('name', 'id');
+            return View::make('teachers.edit')->with(array('route' => ['teachers.update', $id], 'teacher' => $teacher, 'method' => 'PUT', 'school_options' => $school_options));
         }
 	}
 

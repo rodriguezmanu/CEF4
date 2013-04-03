@@ -20,7 +20,8 @@ class StudentsController extends BaseController {
 	public function create()
 	{
         $student = new Student();
-        return View::make('students.create')->with(array('route' => 'students.store', 'student' => $student, 'method' => 'POST'));
+		$church_options = array('' => 'Select One') + Church::lists('name', 'id');
+        return View::make('students.create')->with(array('route' => 'students.store', 'student' => $student, 'method' => 'POST', 'church_options' => $church_options));
 	}
 
 	/**
@@ -89,7 +90,8 @@ class StudentsController extends BaseController {
         if (! $student) {
             echo "blank";
         } else {
-            return View::make('students.edit')->with(array('route' => ['students.update', $id], 'student' => $student, 'method' => 'PUT'));
+			$church_options = array('' => 'Select One') + Church::lists('name', 'id');
+            return View::make('students.edit')->with(array('route' => ['students.update', $id], 'student' => $student, 'method' => 'PUT', 'church_options' => $church_options));
         }
 	}
 

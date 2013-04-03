@@ -13,5 +13,5 @@
     @endforeach
 </ul>
 
-{{ Html::linkAction('WorkerController@create', 'New') }}
+{{ Html::linkAction('WorkersController@create', 'New') }}
 @stop

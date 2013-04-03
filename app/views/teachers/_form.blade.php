@@ -12,7 +12,7 @@
 
 <p>
 {{ Form::label('school_id', 'school_id: ') }}
-{{ Form::text('school_id', null, ['size' => 40, 'maxlength' => 40]) }}
+{{ Form::select('school_id', $school_options) }}
 </p>
 
 <p>
