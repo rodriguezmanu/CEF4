@@ -9,7 +9,9 @@ class TeachersController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('teachers.index')->with('teachers', Teacher::all());
+		$per_page = 15;
+		$teachers = Teacher::paginate($per_page);
+        return View::make('teachers.index')->with('teachers', $teachers);
 	}
 
 	/**

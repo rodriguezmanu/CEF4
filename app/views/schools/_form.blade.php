@@ -59,4 +59,4 @@
 {{ Form::submit() }}
 </p>
 
-{{ Form::close() }}
+{{ Form::token() . Form::close() }}

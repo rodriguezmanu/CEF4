@@ -9,7 +9,9 @@ class ChurchesController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('churches.index')->with('churches', Church::all());
+		$per_page = 15;
+		$churches = Church::paginate($per_page);
+        return View::make('churches.index')->with('churches', $churches);
 	}
 
 	/**

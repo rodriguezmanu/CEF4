@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Schools</h1>
+{{ Html::linkAction('SchoolsController@create', 'New') }}
 <hr />
 
 <ul>
@@ -13,5 +14,4 @@
     @endforeach
 </ul>
 
-{{ Html::linkAction('SchoolsController@create', 'New') }}
 @stop

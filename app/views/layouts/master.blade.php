@@ -5,15 +5,16 @@
 <title>@yield('title')</title>
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 </head>
 	<body>
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner">
 <div class="container-fluid">
-{{Html::link('/', 'CEF Database', array('class' => 'brand'))}}
+<a href="{{URL::to('/')}}" class="brand">CEF Database</a>
 <!--
 <ul class="nav">
-<li <?php if (isset($navbar) && $navbar == 'home') echo "class='active'" ?> >{{Html::link('/', 'Home')}}</li>
+<li <?php if (isset($navbar) && $navbar == 'home') echo "class='active'" ?> ><a href="{{URL::to('/')}}" class="brand"> Home</a></li>
 <li <?php if (isset($navbar) && $navbar == 'churches') echo "class='active'" ?> >{{ Html::link('/churches', 'Churches') }}</li>
 <li <?php if (isset($navbar) && $navbar == 'students') echo "class='active'" ?> >{{ Html::link('/students', 'Students') }}</li>
 <li <?php if (isset($navbar) && $navbar == 'reports') echo "class='active'" ?> >{{ Html::link('/reports', 'Reports') }}</li>
@@ -78,9 +79,12 @@
 </footer>
 
 </div><!--/container-->
-
+<script type="text/javascript">var BASE = '<?php echo "http://mpemberton.dyndns.org/lois4/" ?>';</script>
         <script src="{{ URL::asset('js/jquery.js') }}"></script>
         <script src="{{ URL::asset('js/bootstrap-dropdown.js') }}"></script>
+		<script src="{{ URL::asset('js/application.js') }}"></script>
+		<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
+@yield('scripts')
     </body>
 </html>

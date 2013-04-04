@@ -66,4 +66,16 @@ Route::group(['before' => 'auth'], function() {
     Route::resource('teachers', 'TeachersController');
     Route::resource('reports', 'ReportsController');
     Route::get('report1', 'ReportsController@pdf');
+
+	Route::get('ajax/teacher-list/{id}', function($id) {
+		$teachers = DB::table('teachers')->select('id', 'lastname','firstname')->where('school_id', $id)->get();
+		$options = "";
+		if ($teachers) {
+			$options = "<option value=''>Select Teacher</option>\n";
+			foreach ($teachers as $teacher) {
+				$options .= "<option value=".$teacher->id.">".$teacher->lastname."</option>\n";
+			}
+		}
+		return $options;
+	});
 });

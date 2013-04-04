@@ -9,7 +9,9 @@ class StudentsController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('students.index')->with('students', Student::all());
+		$per_page = 15;
+		$students = Student::paginate($per_page);
+        return View::make('students.index')->with('students', $students);
 	}
 
 	/**
@@ -21,7 +23,9 @@ class StudentsController extends BaseController {
 	{
         $student = new Student();
 		$church_options = array('' => 'Select One') + Church::lists('name', 'id');
-        return View::make('students.create')->with(array('route' => 'students.store', 'student' => $student, 'method' => 'POST', 'church_options' => $church_options));
+		$school_options = array('' => 'Select One') + School::lists('name', 'id');
+		$teacher_options = array('' => 'Select A School');
+        return View::make('students.create')->with(array('route' => 'students.store', 'student' => $student, 'method' => 'POST', 'church_options' => $church_options, 'school_options' => $school_options, 'teacher_options' => $teacher_options));
 	}
 
 	/**
@@ -49,11 +53,12 @@ class StudentsController extends BaseController {
         $student->city = Input::get('city');
         $student->state = Input::get('state');
         $student->zip = Input::get('zip');
-        $student->birthdate = Input::get('birthdate');
+        $student->birthdate = date('Y-m-d',(strtotime(Input::get('birthdate'))));
         $student->grade_id = Input::get('grade_id');
         $student->dismissal_id = Input::get('dismissal_id');
         $student->allergies = Input::get('allergies');
         $student->homephone = Input::get('homephone');
+		$student->school_id = Input::get('school_id');
         $student->homeroom_teacher_id = Input::get('homeroom_teacher_id');
         $student->dadname = Input::get('dadname');
         $student->dadphone = Input::get('dadphone');
@@ -91,7 +96,9 @@ class StudentsController extends BaseController {
             echo "blank";
         } else {
 			$church_options = array('' => 'Select One') + Church::lists('name', 'id');
-            return View::make('students.edit')->with(array('route' => ['students.update', $id], 'student' => $student, 'method' => 'PUT', 'church_options' => $church_options));
+			$school_options = array('' => 'Select One') + School::lists('name', 'id');
+			$teacher_options = array('' => 'Select One') + Teacher::where('school_id', $student->school_id)->lists('lastname', 'id');
+            return View::make('students.edit')->with(array('route' => ['students.update', $id], 'student' => $student, 'method' => 'PUT', 'church_options' => $church_options, 'school_options' => $school_options, 'teacher_options' => $teacher_options));
         }
 	}
 
@@ -114,11 +121,12 @@ class StudentsController extends BaseController {
         $student->city = Input::get('city');
         $student->state = Input::get('state');
         $student->zip = Input::get('zip');
-        $student->birthdate = Input::get('birthdate');
+        $student->birthdate =  date('Y-m-d',(strtotime(Input::get('birthdate'))));
         $student->grade_id = Input::get('grade_id');
         $student->dismissal_id = Input::get('dismissal_id');
         $student->allergies = Input::get('allergies');
         $student->homephone = Input::get('homephone');
+		$student->school_id = Input::get('school_id');
         $student->homeroom_teacher_id = Input::get('homeroom_teacher_id');
         $student->dadname = Input::get('dadname');
         $student->dadphone = Input::get('dadphone');

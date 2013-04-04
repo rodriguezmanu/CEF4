@@ -9,7 +9,9 @@ class WorkersController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('workers.index')->with('workers', Worker::all());
+		$per_page = 15;
+		$workers = Worker::paginate($per_page);
+        return View::make('workers.index')->with('workers', $workers);
 	}
 
 	/**

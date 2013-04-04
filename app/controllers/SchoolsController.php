@@ -9,7 +9,9 @@ class SchoolsController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('schools.index')->with('schools', School::all());
+		$per_page = 15;
+		$schools = School::paginate($per_page);
+        return View::make('schools.index')->with('schools', $schools);
 	}
 
 	/**

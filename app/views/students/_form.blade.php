@@ -17,12 +17,12 @@
 
 <p>
 {{ Form::label('photorelease', 'photorelease: ') }}
-{{ Form::text('photorelease', null, ['size' => 40, 'maxlength' => 40]) }}
+{{ Form::select('photorelease', [1 => 'Yes', 0 => 'No']) }}
 </p>
 
 <p>
 {{ Form::label('sex', 'sex: ') }}
-{{ Form::text('sex', null, ['size' => 40, 'maxlength' => 40]) }}
+{{ Form::select('sex', ['' => 'Select One', 1 => 'Boy', 2 => 'Girl']) }}
 </p>
 
 <p>
@@ -52,7 +52,7 @@
 
 <p>
 {{ Form::label('birthdate', 'birthdate: ') }}
-{{ Form::text('birthdate') }}
+{{ Form::text('birthdate', $student->getbirthdate()) }}
 </p>
 
 <p>
@@ -76,8 +76,13 @@
 </p>
 
 <p>
+{{ Form::label('school_id', 'school_id: ') }}
+{{ Form::select('school_id', $school_options) }}
+</p>
+
+<p>
 {{ Form::label('homeroom_teacher_id', 'homeroom_teacher_id: ') }}
-{{ Form::text('homeroom_teacher_id') }}
+{{ Form::select('homeroom_teacher_id', $teacher_options) }}
 </p>
 
 <p>
@@ -119,4 +124,4 @@
 {{ Form::submit() }}
 </p>
 
-{{ Form::close() }}
+{{ Form::token() . Form::close() }}
