@@ -1,5 +1,33 @@
 {{ Form::model($church, ['route' => $route, 'method' => $method]) }}
 
+<fieldset>
+	<legend>Contact</legend>
+	<div><label for="name">Name</label> <input id="name" name="name"></div>
+	<fieldset class="radio">
+		<legend><span>Gender</span></legend>
+		<ul>
+			<li><input type="radio" id="male" name="male"> <label for="male">Male</label></li>
+			<li><input type="radio" id="female" name="female"> <label for="female">Female</label></li>
+		</ul>
+	</fieldset>
+</fieldset>
+
+
+
+<table>
+<tr>
+<td>
+{{ Form::label('name', 'Name: ', array('class' => 'frmlabel')) }}
+{{ Form::text('name', null, ['size' => 40, 'maxlength' => 40]) }}
+</td>
+</tr>
+<tr>
+<td>
+{{ Form::label('address1', 'address1: ') }}
+{{ Form::text('address1') }}
+</td>
+</tr>
+</table>
 <p>
 {{ Form::label('name', 'Name: ') }}
 {{ Form::text('name', null, ['size' => 40, 'maxlength' => 40]) }}

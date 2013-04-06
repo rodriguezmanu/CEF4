@@ -1,0 +1,990 @@
+﻿/* Styles to be shared among all web applications */
+#epicUserWebMask, #epicUserWebLoadAnimation
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#epicUserWebMask
+{
+    z-index: 20000;
+    background-color:  #2E3B42;
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+}
+
+#epicUserWebLoadAnimation
+{
+     z-index: 20001;
+    background: transparent url('../images/loader.gif') no-repeat center;
+}
+
+#epicUserWebQuickSignIn
+{
+    display: none; /*starts hidden*/
+    z-index: 20002;
+}
+
+/************************* Epic Navigation *************************/
+#userweb-menu
+{
+    /*
+    This is only here because WordPress uses z-index to position the banner
+    which interferes with this menu. 98 was chosen because 99 is likely
+    to be used by page masks. This is subject to change.    
+    */
+    z-index: 98;
+}
+
+#userweb-menu,
+#userweb-menu *
+{
+    font-size: 12px;
+    font-family: Trebuchet MS, "Lucida Sans" ,Helvetica,Verdana,Arial,sans-serif;
+    line-height: 18px;
+    color: #555;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+#userweb-menu ul
+{
+    list-style-type: none;
+}
+
+#userweb-menu
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 30px;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) repeat-x left -60px;
+    white-space: nowrap;
+    zoom: 1;
+}
+
+#userweb-menu a,
+#userweb-menu a:hover,
+#userweb-menu li.browse a:hover.main-menu
+{
+    text-decoration: none;
+    outline: none;
+}
+
+#userweb-menu a.logo
+{
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 92px;
+    height: 29px;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat 0 0;
+}
+
+#userweb-menu a:hover.logo
+{
+    background-position: 0 -30px;
+}
+
+/* Top level menu items */
+#userweb-menu ul.main-menu
+{
+    list-style-type: none;
+    padding: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 30px;
+}
+
+#userweb-menu li.main-menu
+{
+    position: relative;
+    height: 30px;
+    clear: none;
+}
+
+#userweb-menu li.main-menu a.main-menu
+{
+    display: inline-block;
+    height: 30px;
+    padding: 0 9px 0 0;
+    margin: 0;
+    position: relative;
+}
+
+#userweb-menu li:hover.main-menu a.main-menu,
+#userweb-menu li.main-menu.visible a.main-menu
+{
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat right -120px;
+}
+
+#userweb-menu a.main-menu span.inner
+{
+    color: #555555;
+    display: inline-block;
+    height: 30px;
+    padding: 0 0 0 8px;
+    line-height: 30px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+#userweb-menu li.main-menu:hover a.main-menu span.inner,
+#userweb-menu li.main-menu.visible a.main-menu span.inner
+{
+    color: #1298eb;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat left -90px;
+}
+ 
+#userweb-menu li.main-menu a.main-menu span.submenu-icon
+{
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 30px;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat -200px top;
+}
+ 
+#userweb-menu li.main-menu:hover a.main-menu span.submenu-icon,
+#userweb-menu li.main-menu.visible a.main-menu span.submenu-icon
+{
+    background-position: -200px -30px;
+}
+
+#userweb-menu li.separator
+{
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat -227px top;
+    width: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+#userweb-menu li.main-menu div.submenu
+{
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 39px;
+    left: 0;
+    list-style-type: none;
+    display: none;
+    z-index: 1;
+    border: none;
+}
+
+#userweb-menu li.main-menu.visible div.submenu
+{
+    display: block;
+    z-index: 999;
+    border: 1px solid #999\9; /* Add a border to IE8- because the box shadow isn't available */
+    padding: 5px;
+}
+
+#userweb-menu li.main-menu.visible div.submenu > ul
+{
+    margin-top: -18px;
+}
+
+#userweb-menu ul.navigation
+{
+    left: 102px;
+}
+
+#userweb-menu ul.navigation li.main-menu
+{
+    float: left;
+}
+
+#userweb-menu li.browse a.main-menu
+{
+    font-weight: normal;
+}
+
+#userweb-menu li.browse div.submenu
+{
+    width: 530px;
+}
+
+#userweb-menu li.nav-group
+{
+    position: relative;
+    width: 265px;
+    clear: left;
+    float: left;
+}
+
+#userweb-menu li.nav-group h1
+{
+    font-size: smaller;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 85px;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Background colors for each section */
+#userweb-menu li.events h1 { background-color: #E0F6EF; border-color: #BEDFD4; }
+#userweb-menu li.training h1 { background-color: #F5D9D9; border-color: #D5A9A9 }
+#userweb-menu li.documentation h1 { background-color: #FEF2E4; border-color: #E4CAAC; }
+#userweb-menu li.support h1 { background-color: #FBEBE3; border-color: #E6CDC1; }
+
+/* Icons for each section */
+#userweb-menu li.nav-group h1 div.browse-menu-icon
+{
+    display: block;
+    margin: 0 auto;
+    background: transparent url(../images/nonTilingPageElements.png) no-repeat -1000px 0;
+    width: 50px;
+    height: 60px;
+}
+#userweb-menu li.events h1 div.browse-menu-icon { background-position: -1000px -80px; height: 36px; }
+#userweb-menu li.training h1 div.browse-menu-icon { background-position: -1000px -160px; height: 32px; }
+#userweb-menu li.documentation h1 div.browse-menu-icon { background-position: -1000px -240px; height: 35px; }
+#userweb-menu li.support h1 div.browse-menu-icon { background-position: -1000px -320px; height: 34px; }
+
+/* Bottom items in each column */
+#userweb-menu li.training, #userweb-menu li.documentation { border-bottom: none; }
+#userweb-menu li.training h1, #userweb-menu li.documentation h1 { bottom: 0; }
+
+#userweb-menu li.documentation,
+#userweb-menu li.training
+{
+    margin-top: 5px;
+}
+
+/* Right hand columns */
+#userweb-menu li.support,
+#userweb-menu li.training
+{
+    clear: none;
+    float: none;
+    margin-left: 265px;
+}
+
+/* Final list element to clear floats */
+#userweb-menu div.clear
+{
+    float: none;
+    min-height: 0;
+    border-bottom: none;
+    height: 0;
+}
+
+#userweb-menu li.browse ul.level-3
+{
+    margin-left: 90px;
+    padding: 5px;
+}
+
+#userweb-menu li.browse ul.level-4
+{
+    margin-left: 10px;
+}
+
+#userweb-menu li.browse a
+{
+    color: #333333;
+}
+
+#userweb-menu li.browse a:hover
+{
+    text-decoration: underline;
+}
+/* end main navigation */
+
+/* secondary navigation */
+#userweb-menu ul.profile
+{
+    right: 0;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) repeat-x left -60px;
+}
+
+#userweb-menu ul.profile li.left-fade
+{
+    position: relative;
+    left: -15px;
+    width: 15px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat -235px top;
+}
+
+#userweb-menu ul.profile li.main-menu
+{
+    float: left;
+}
+
+#userweb-menu ul.profile li.main-menu span.icon
+{
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 10px;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat left top;
+    margin-right: 3px;
+}
+
+/* Main menu tiny icons */
+#userweb-menu ul.profile li.main-menu span.icon.user-profile { background-position: -180px top; }
+#userweb-menu ul.profile li.main-menu:hover span.icon.user-profile { background-position: -180px -30px; }
+#userweb-menu ul.profile li.main-menu span.icon.sign-out { background-position: -190px top; }
+#userweb-menu ul.profile li.main-menu:hover span.icon.sign-out { background-position: -190px -30px; }
+#userweb-menu ul.profile li.main-menu span.icon.usw-search { width: 17px; background-position: -210px top; }
+#userweb-menu ul.profile li.main-menu:hover span.icon.usw-search, #userweb-menu ul.profile li.main-menu.visible span.icon.usw-search { background-position: -210px -30px; }
+
+#userweb-menu div.search-dialog
+{
+    width: 250px;
+    padding: 0;
+}
+
+#userweb-menu div.search-dialog input.search-context
+{
+    height: 16px;
+    width: 16px;
+    vertical-align: top;
+    outline: none;
+    float: left;
+}
+
+#userweb-menu div.search-dialog label
+{
+    display: block;
+    line-height: 16px;
+    vertical-align: middle;
+    margin: 0;
+    padding: 2px 5px;
+    color: #333;
+    font-size: 1em;
+    font-family: Trebuchet MS, "Lucida Sans" ,Helvetica,Verdana,Arial,sans-serif;
+    cursor: pointer;
+    zoom: 1;
+}
+
+#userweb-menu div.search-dialog li:first-child > label
+{
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+#userweb-menu div.search-dialog label:hover
+{
+    background-color: #f5f5f5;
+}
+
+#userweb-menu div.search-dialog label span
+{
+    display: block;
+    margin-left: 20px;
+}
+
+#userweb-menu div.search-dialog label span.description
+{
+    color: Silver;
+}
+
+#userweb-menu div.search-term-holder
+{
+    margin: 5px;
+    border: 1px solid silver;
+    padding: 1px 24px 1px 1px;
+    position: relative;
+}
+
+#userweb-menu div.search-term-holder input.search-term
+{
+    margin: 0;
+    border: none;
+    padding: 0;
+    width: 100%;
+    outline: none;
+}
+
+#userweb-menu div.search-term-holder a
+{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 3px;
+    bottom: 0;
+    width: 17px;
+    background: transparent url(../images/Epic.UserWeb.Shared.png) no-repeat -210px -34px;
+}
+
+#userweb-menu div.search-term-holder a.spinner
+{
+    top: 2px;
+    right: 2px;
+    background: transparent url(../images/spinner.gif) no-repeat left top;
+}
+
+/* end secondary navigation */
+
+#userweb-menu label
+{
+    display: inline;
+}
+
+/************************* Fluffy Div ************************/
+.usw-content-panel
+{
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 0;
+}
+
+.usw-content-panel.usw-dim
+{
+    background-color: #F3F3F7;
+}
+
+.usw-content-panel .usw-fluff
+{
+    position:absolute;
+	background: url(../images/horizontalSiteElements.png) no-repeat 0 0;
+}
+
+.usw-content-panel .usw-fluff-t
+{
+    background-repeat: repeat-x;
+    background-position: 0 -1655px;
+    top: -10px;
+    right: 0;
+    left: 0;
+    height: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-t
+{
+    background-position: 0 -5110px;
+}
+
+.usw-content-panel .usw-fluff-tr
+{
+    background-position: -9px -1745px;
+    top: -10px;
+    right: -10px;
+    height: 10px;
+    width: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-tr
+{
+    background-position: -9px -5200px;
+}
+
+.usw-content-panel .usw-fluff-r
+{
+    background: url(../images/verticalSiteElements.png) repeat-y -39px 0;
+    top: 0;
+    right: -10px;
+    bottom: 0;
+    width: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-r
+{
+    background-position: -235px 0;
+}
+
+.usw-content-panel .usw-fluff-br
+{
+    background-position: -9px -1808px;
+    bottom: -10px;
+    right: -10px;
+    width: 10px;
+    height: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-br
+{
+    background-position: -9px -5265px;
+}
+
+.usw-content-panel .usw-fluff-b
+{
+    background-repeat: repeat-x;
+    background-position: 0 -1688px;
+    left: 0;
+    bottom: -10px;
+    right: 0;
+    height: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-b
+{
+    background-position: 0 -5145px;
+}
+
+.usw-content-panel .usw-fluff-bl
+{
+    background-position: -6px -1778px;
+    bottom: -10px;
+    left: -10px;
+    width: 10px;
+    height: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-bl
+{
+    background-position: -6px -5235px;
+}
+
+.usw-content-panel .usw-fluff-l
+{
+    background: url(../images/verticalSiteElements.png) repeat-y -6px 0;
+    top: 0;
+    left: -10px;
+    bottom: 0;
+    width: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-l
+{
+    background-position: -200px 0;
+}
+
+.usw-content-panel .usw-fluff-tl
+{
+    background-position: -6px -1715px;
+    top: -10px;
+    left: -10px;
+    width: 10px;
+    height: 10px;
+}
+
+.usw-content-panel.usw-dim > .usw-fluff-tl
+{
+    background-position: -6px -5170px;
+}
+
+.usw-content-panel .usw-fluff-close,
+a.usw-section-close
+{
+	position: absolute;
+	right: -6px;
+	top: -5px;
+	width: 40px; 
+	height: 30px;
+	background: url(../images/nonTilingPageElements.png) no-repeat -240px 0;
+	cursor: pointer;
+	z-index: 1000;
+	font-size: 0em;
+	color: Transparent;  /* standard browsers should not show the text inside the dialogClose. Only IE6 stylesheet will override the size and color */
+}
+
+a.usw-section-close
+{
+    right: 0;
+    top: 0;
+}
+
+.usw-content-panel .usw-fluff-close:hover,
+a.usw-section-close:hover
+{
+	background-position: -240px -30px;
+}
+
+div.usw-content-panel div.usw-divot-holder
+{
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    height: 0px;
+}
+
+div.usw-content-panel div.usw-divot
+{
+    background: transparent url(../images/nonTilingPageElements.png) no-repeat -900px -512px;
+    height: 20px;
+    width: 25px;
+    margin: 0 auto !important;
+    position: relative;
+    top: -18px;
+}
+
+/************************* Content Panel with Heading *********************/
+
+.usw-content-panel.usw-with-heading .usw-fluff-t
+{
+    background-repeat: repeat-x;
+    background-position: 0 -3910px;
+    top: -70px;
+    right: 0;
+    left: 0;
+    padding: 0;
+    height: 70px;
+    z-index: 1;
+}
+
+.usw-content-panel.usw-with-heading .usw-fluff-t h1
+{
+    line-height: 65px;
+    color: White;
+    font-size: 18pt;
+    margin: 0;
+    padding: 5px 0 0 15px;
+    text-align: left;
+    font-family: 'Segoe UI' , Trebuchet MS, 'Lucida Sans' , Helvetica, Verdana, Arial, sans-serif;
+}
+
+.usw-content-panel.usw-with-heading .usw-fluff-t h1 a
+{
+    font-family: 'Segoe UI' , Trebuchet MS, 'Lucida Sans' , Helvetica, Verdana, Arial, sans-serif;
+    text-decoration: none;
+    color: White;
+}
+
+.usw-content-panel.usw-with-heading span.site-name,
+.usw-content-panel.usw-with-heading span.site-logo
+{
+    /*background-image: url(../../images/nonTilingPageElements.png);*/
+}
+
+.usw-content-panel.usw-with-heading .usw-fluff-tr
+{
+    background-position: -9px -4070px;
+    top: -70px;
+    right: -10px;
+    height: 70px;
+    width: 10px;
+}
+
+.usw-content-panel.usw-with-heading .usw-fluff-tl
+{
+    background-position: -6px -3990px;
+    top: -70px;
+    left: -10px;
+    width: 10px;
+    height: 70px;
+}
+
+div.usw-content-panel div.usw-divot
+{
+    background: transparent url(../images/nonTilingPageElements.png) no-repeat -900px -512px;
+    height: 20px;
+    width: 25px;
+    margin: 0 auto !important;
+    position: relative;
+    top: -18px;
+}
+
+/************************* Page Section *****************************/
+
+.usw-section
+{
+    background-color: White;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px #666;
+    border: none;
+    padding: 1px;
+}
+
+.usw-section-heading
+{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #999 url(../images/heading-gradient.png) repeat-x left -20px;
+    color: White;
+    padding: 5px 10px;
+}
+
+.usw-section-body
+{
+    padding: 10px;
+}
+
+.usw-section-divot
+{
+    background: transparent url(../images/nonTilingPageElements.png) no-repeat -900px -512px;
+    height: 18px;
+    width: 25px;
+    margin: 0 auto !important;
+    position: relative;
+    top: -23px;
+}
+
+.usw-section-divot.usw-right
+{
+    background-position: -935px -512px;
+    height: 25px;
+    width: 18px;
+}
+
+.usw-section-divot.usw-bottom
+{
+    background-position: -900px -545px;
+    top: auto;
+    bottom: -18px;
+}
+
+/************************* Data entry controls  *********************/
+
+ul.usw-single-select-horizontal
+{
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px #666;
+}
+
+ul.usw-single-select-horizontal > li
+{
+    float: left;
+    background: #ccc url(../images/heading-gradient.png) repeat-x left -20px;
+    border: 1px solid #999;
+    border-right-width: 0;
+}
+
+ul.usw-single-select-horizontal > li:hover
+{
+    background-color: #B2DAFB;
+}
+
+ul.usw-single-select-horizontal > li.selected
+{
+    background-color: #2F9EF9;
+    border-color: #2F9EF9;
+}
+
+ul.usw-single-select-horizontal > li.first-child
+{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+ul.usw-single-select-horizontal > li.last-child
+{
+    border-right-width: 1px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+ul.usw-single-select-horizontal > li > a
+{
+    display: block;
+    color: #000;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    outline: none;
+}
+
+ul.usw-single-select-horizontal > li.selected > a
+{
+    color: #FFFFFF;
+}
+
+/************************* Nested Content Panel *********************/
+
+.usw-content-panel.usw-nested .usw-fluff-t
+{
+    background-position: 0 -3700px;
+    top: -5px;
+    right: 0;
+    left: 0;
+    height: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-tr
+{
+    background-position: 0 -3730px;
+    top: -5px;
+    right: -5px;
+    width: 5px;
+    height: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-r
+{
+    background-position: -180px 0;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    width: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-br
+{
+    background-position: 0 -3750px;
+    bottom: -5px;
+    right: -5px;
+    width: 5px;
+    height: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-b
+{
+    background-position: 0 -3710px;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-bl
+{
+    background-position: -20px -3740px;
+    bottom: -5px;
+    left: -5px;
+    width: 5px;
+    height: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-l
+{
+    background-position: -190px 0;
+    left: -5px;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+}
+
+.usw-content-panel.usw-nested .usw-fluff-tl
+{
+    background-position: -20px -3720px;
+    top: -5px;
+    left: -5px;
+    width: 5px;
+    height: 5px;
+}
+
+/************************* Page Layout *********************/
+body.usw-body
+{
+    padding: 50px 0 0 0;
+    background: transparent url(../images/canvas.png);
+}
+
+div.usw-centering-container
+{
+    margin: 0 20px;
+}
+
+div.usw-body
+{
+    margin: 0 auto;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+div.usw-background-tl,
+div.usw-background-tr
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 349px;
+    height: 178px;
+    background: transparent url(../images/top-left-stain.png) no-repeat left top;
+    z-index: -2;
+}
+
+div.usw-background-tr
+{
+    left: auto;
+    right: 0;
+    width: 264px;
+    height: 187px;
+    background: transparent url(../images/top-right-stain.png) no-repeat left top;
+}
+
+div.usw-copyright
+{
+    padding-top: 15px;
+    clear: both;
+    text-align: center;
+    font-size: 12px;
+    font-family: Trebuchet MS, "Lucida Sans" ,Helvetica,Verdana,Arial,sans-serif;
+    color: #666;
+}
+
+div.usw-copyright a
+{
+    color: #666;
+}
+
+.usw-button
+{
+    border-radius: 4px;
+    display: block;
+    color: #fff;
+    background: #73543f url(../images/heading-gradient.png) repeat-x left -20px;
+    padding: 0 10px;
+    text-decoration: none;
+    height: 24px;
+    line-height: 24px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #73543f;
+    position: relative;
+}
+
+.usw-button:hover,
+.usw-button:focus
+{
+    background-color: #8A6B56;
+    border-color: #73543f;
+    color: #fff;
+    text-decoration: none;
+}
+
+.usw-button.usw-secondary
+{
+    background-color: #E0D1C7;
+    color: #73543f;
+    border-color: #C9BBB3;
+}
+
+.usw-button.usw-secondary:hover,
+.usw-button.usw-secondary:focus
+{
+    background: #DACABB url(../images/heading-gradient.png) repeat-x left -20px;    
+    border-color: #C9BBB3;
+}
+
+.usw-button .spinner,
+.usw-button .usw-spinner
+{
+    position: absolute;
+    display: none;
+    width: 16px;
+    height: 16px;
+    top: -8px;
+    right: -8px;
+    background: transparent url(../images/spinner.gif) no-repeat left top;
+}
+
+.usw-button.active .spinner,
+.usw-button.active .usw-spinner
+{
+    display: block;
+}
+
+/************************* Utility Styles *********************/
+.usw-hidden
+{
+    display: none;
+}
+
+.usw-spinner
+{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../images/spinner.gif");
+}

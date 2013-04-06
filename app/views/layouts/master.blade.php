@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 </head>
 	<body>
 <div class="navbar navbar-fixed-top">
