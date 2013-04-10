@@ -9,6 +9,10 @@ class TeachersController extends BaseController {
 	 */
 	public function index()
 	{
+        if (Auth::user()->level(7, '<=')) {
+            return Redirect::to('/');
+        }
+
 		$per_page = 15;
 		$teachers = Teacher::paginate($per_page);
         return View::make('teachers.index')->with('teachers', $teachers);

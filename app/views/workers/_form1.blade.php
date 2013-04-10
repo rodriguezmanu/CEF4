@@ -1,6 +1,6 @@
 {{ Form::model($worker, ['route' => $route, 'method' => $method]) }}
                                                     <div class="Content">
-                                                        <div id="_e11slg9_pnlContainer" class="SLGworkspace" style="">
+                                                        <div class="SLGworkspace" style="">
                                                             <table class="detailsTable">
                                                                 <tbody>
                                                                     <tr>
@@ -117,10 +117,14 @@
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
-                                                            <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
+                                                            <div style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<a href="{{ URL::to('workers'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php if (Auth::user()->level(7, '>=')) { ?>
+																	<a href="{{ URL::to('workers'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php } else if (Auth::user()->level(7, '<=')) { ?>
+																	<a href="{{ URL::to('workerlist'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -9,6 +9,10 @@ class ChurchesController extends BaseController {
 	 */
 	public function index()
 	{
+        if (Auth::user()->level(7, '<=')) {
+            return Redirect::to('/');
+        }
+
 		$per_page = 15;
 		$churches = Church::paginate($per_page);
         return View::make('churches.index')->with('churches', $churches);

@@ -9,6 +9,10 @@ class WorkersController extends BaseController {
 	 */
 	public function index()
 	{
+        if (Auth::user()->level(7, '<=')) {
+            return Redirect::to('/');
+        }
+
 		$per_page = 15;
 		$workers = Worker::paginate($per_page);
         return View::make('workers.index')->with('workers', $workers);

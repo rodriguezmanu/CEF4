@@ -1,6 +1,6 @@
 {{ Form::model($student, ['route' => $route, 'method' => $method]) }}
                                                     <div class="Content">
-                                                        <div id="_e11slg9_pnlContainer" class="SLGworkspace" style="">
+                                                        <div class="SLGworkspace" style="">
                                                             <table class="detailsTable">
                                                                 <tbody>
                                                                     <tr>
@@ -90,7 +90,7 @@
                                                                 </tbody>
                                                             </table>
                                                             <div class="sectionContainer">
-                                                                <span><span id="_e11slg9_lblApplications" class="basicLabel"><b>School Info</b></span>
+                                                                <span><span class="basicLabel"><b>School Info</b></span>
                                                                 </span>
                                                                 <div class="indentContainer" style="width:720px">
                                                                     <table class="detailsTable">
@@ -140,7 +140,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="sectionContainer">
-                                                                <span><span id="_e11slg9_lblApplications" class="basicLabel"><b>Contacts:</b></span>
+                                                                <span><span class="basicLabel"><b>Contacts:</b></span>
                                                                 </span>
                                                                 <div class="indentContainer" style="width:720px">
                                                                     <table class="detailsTable">
@@ -189,10 +189,14 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                            <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
+                                                            <div style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<a href="{{ URL::to('students'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php if (Auth::user()->level(7, '>=')) { ?>
+																	<a href="{{ URL::to('students'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php } else if (Auth::user()->level(7, '<=')) { ?>
+																	<a href="{{ URL::to('studentlist', $student->school_id); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<?php } ?>
                                                             </div>
                                                         </div>
                                                     </div>

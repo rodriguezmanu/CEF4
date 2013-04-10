@@ -44,28 +44,19 @@ Route::get('logout', function() {
     Auth::logout();
     return Redirect::to('/');
 });
-/*
-Route::get('/', function()
-{
-    //$user = User::find(1);
-    $user = User::with('roles')->where('username','=','admin')->get();
-    echo $user;
-    echo "<br />";
-    echo $user->roles;
-    return;
-	return View::make('hello');
-});
-*/
 
 // Before the user tries to access these resources, authenticate them
 Route::group(['before' => 'auth'], function() {
+
 	$user = Auth::user();
+
     Route::resource('schools', 'SchoolsController');
     Route::resource('churches', 'ChurchesController');
     Route::resource('students', 'StudentsController');
     Route::resource('workers', 'WorkersController');
     Route::resource('teachers', 'TeachersController');
     Route::resource('reports', 'ReportsController');
+
     Route::get('report1', 'ReportsController@pdf');
 	Route::get('profile', 'UsersController@profile');
 	Route::get('studentlist/{school_id}', 'StudentsController@studentlist');
