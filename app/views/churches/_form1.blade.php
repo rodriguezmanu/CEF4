@@ -98,6 +98,32 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
+                                                            <div class="sectionContainer">
+                                                                <span><span class="basicLabel"><b>Adoptions:</b></span>
+                                                                </span>
+                                                                <div class="indentContainer" style="width:320px">
+                                                                    <table class="detailsTable" id="adoptions">
+																		<tbody>
+																			@foreach ($adoptions as $adoption)
+																			<tr id="tr_<?php echo $adoption->id ?>">
+																				<td>
+																					<?php echo $adoption->name ?>
+																					{{ Form::hidden('adoption_'.$adoption->id, $adoption->id, array('id' => 'adoption_'.$adoption->id)) }}
+																					</td>
+																				<td>
+																					<a href="#" class="meclick" id="<?php echo $adoption->id ?>">{{ Html::image('images/remove.gif', 'remove', array('class' => 'Icon')) }}</a>
+																				</td>
+																			</tr>
+																			@endforeach
+																			<tr>
+																				<td>
+																					{{ Form::select('new_school_adopted', $school_options) }}
+																				</td>
+																			</tr>
+																		</tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
                                                             <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp

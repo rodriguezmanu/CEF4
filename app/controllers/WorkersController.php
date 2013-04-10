@@ -14,6 +14,23 @@ class WorkersController extends BaseController {
         return View::make('workers.index')->with('workers', $workers);
 	}
 
+	public function workerlist()
+	{
+		// first check if current user is connected to school (via church adoptionlink)
+		// user->church_id = adoptionlink->church_id and adoptionlink->school_id = $school_id
+		if (DB::table('adoptionlink')->where('church_id', Auth::user()->church_id)->count()) {
+			$per_page = 15;
+			$workers = DB::table('workers')
+                ->select('workers.id','lastname','firstname')
+                ->join('churches', 'workers.church_id', '=', 'churches.id')
+                ->where('churches.id', Auth::user()->church_id)
+                ->paginate($per_page);
+			return View::make('workers.index')->with('workers', $workers);
+		} else {
+			App::abort(401, 'You are not authorized.');
+		}
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -83,11 +100,16 @@ class WorkersController extends BaseController {
 	{
         $worker = Worker::find($id);
         if (! $worker) {
-            echo "blank";
-        } else {
-			$church_options = array('' => 'Select One') + Church::lists('name', 'id');
-            return View::make('workers.edit')->with(array('route' => ['workers.update', $id], 'worker' => $worker, 'method' => 'PUT', 'church_options' => $church_options));
+            App::abort(401, 'No identifier');
         }
+        if (Auth::user()->level(7, '<=')) {
+            if ($worker->church_id != Auth::user()->church_id) {
+                App::abort(401, 'You are not authorized.');
+            }
+        }
+
+        $church_options = array('' => 'Select One') + Church::lists('name', 'id');
+        return View::make('workers.edit')->with(array('route' => ['workers.update', $id], 'worker' => $worker, 'method' => 'PUT', 'church_options' => $church_options));
 	}
 
 	/**

@@ -2,8 +2,8 @@
 
 use Toddish\Verify\Models\User as VerifyUser;
 
-class User extends VerifyUser
-{
-      // Code
+class User extends VerifyUser {
+
+    protected $table = 'users';
 }
 ?>

@@ -12,7 +12,7 @@
 																		{{ Html::image('images/details.png', 'details', array('class' => 'Icon')) }}
                                                                     </td>
                                                                     <td>
-                                                                        <span class="Left">Home</span>
+                                                                        <span class="Left">Roles</span>
                                                                     </td>
                                                                     <td class="Right">
                                                                     </td>
@@ -22,9 +22,23 @@
                                                     </div>
 													<div class="Content">
                                                         <div class="SLGworkspace" style="">
-															<br />
-															Welcome to the Iredell County CEF website.  Please enjoy!
-															
+															<table width="500px">
+																<tbody>
+																@foreach($roles as $role)
+																	<tr>
+																	<td>
+																	{{ Html::linkAction('RolesController@edit', $role->name, array($role->id)) }}
+																	</td>
+																	<td>
+																		{{ Form::model($role, [ 'method' => 'DELETE', 'route' => ['admin.roles.destroy', $role->id] ]) }}
+																		{{ Form::submit('DELETE') }}
+																		{{ Form::close() }}
+																	</td>
+																	</tr>
+																@endforeach
+																</tbody>
+															</table>
+															{{$roles->links()}}
 														</div>
 													</div>
 												</div>

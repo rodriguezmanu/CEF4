@@ -1,9 +1,9 @@
 @extends('layouts.new')
 
 @section('content')
-                                       <div id="_e11slg2_pnlView" class="RightPanel">
-                                            <div id="_e11slg32_pnlContainer" style="">
-                                                <div id="_e11slg32_section1_section" class="SectionBlock">
+                                       <div class="RightPanel">
+                                            <div style="">
+                                                <div class="SectionBlock">
                                                     <div class="Header">
                                                         <table class="SectionTable">
                                                             <tbody>
@@ -12,7 +12,7 @@
 																		{{ Html::image('images/details.png', 'details', array('class' => 'Icon')) }}
                                                                     </td>
                                                                     <td>
-                                                                        <span id="_e11slg32_section1_lblTitle" class="Left">Edit Church</span>
+                                                                        <span class="Left">Edit Church</span>
                                                                     </td>
                                                                     <td class="Right">
                                                                     </td>
@@ -30,6 +30,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#name").focus();
+		$(".meclick").click(function(event) {
+			var clicked_id = (this).id;
+			// first confirm deletion
+			// if confirmed, remove ID from stored array
+			// then remove the control from the screen
+			$("#tr_"+clicked_id).hide();
+			$("#adoption_"+clicked_id).val('removed');
+			return false;
+		});
     });
 </script>
 @stop

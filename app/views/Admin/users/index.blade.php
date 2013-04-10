@@ -11,9 +11,12 @@
                                                                     <td style="width: 10px;">
 																		{{ Html::image('images/details.png', 'details', array('class' => 'Icon')) }}
                                                                     </td>
-                                                                    <td>
-                                                                        <span class="Left">Home</span>
+                                                                    <td style="width: 100px;">
+                                                                        <span class="Left">Users</span>
                                                                     </td>
+																	<td>
+																	{{ Html::linkAction('UsersController@create', 'Create User') }}
+																	</td>
                                                                     <td class="Right">
                                                                     </td>
                                                                 </tr>
@@ -22,9 +25,23 @@
                                                     </div>
 													<div class="Content">
                                                         <div class="SLGworkspace" style="">
-															<br />
-															Welcome to the Iredell County CEF website.  Please enjoy!
-															
+															<table width="500px">
+																<tbody>
+																@foreach($users as $user)
+																	<tr>
+																	<td>
+																	{{ Html::linkAction('UsersController@edit', $user->username, array($user->id)) }}
+																	</td>
+																	<td>
+																		{{ Form::model($user, [ 'method' => 'DELETE', 'route' => ['admin.users.destroy', $user->id] ]) }}
+																		{{ Form::submit('DELETE') }}
+																		{{ Form::close() }}
+																	</td>
+																	</tr>
+																@endforeach
+																</tbody>
+															</table>
+															{{$users->links()}}
 														</div>
 													</div>
 												</div>

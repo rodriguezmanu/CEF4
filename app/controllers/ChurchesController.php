@@ -22,7 +22,8 @@ class ChurchesController extends BaseController {
 	public function create()
 	{
         $church = new Church();
-        return View::make('churches.create')->with(array('route' => 'churches.store', 'church' => $church, 'method' => 'POST'));
+		$school_options = array('' => 'Select One') + School::lists('name', 'id');
+        return View::make('churches.create')->with(array('route' => 'churches.store', 'church' => $church, 'method' => 'POST', 'adoptions' => array(), 'school_options' => $school_options));
 	}
 
 	/**
@@ -54,6 +55,14 @@ class ChurchesController extends BaseController {
         $church->pastor_email = Input::get('pastor_email');
         $church->save();
 
+		$tmplink = Input::get('new_school_adopted');
+		if ($tmplink) {
+			$link = new Adoption;
+			$link->school_id = $tmplink;
+			$link->church_id = $church->id;
+			$link->save();
+		}
+
         return Redirect::to('churches')->with('success', 'Church Created');
                                 
 	}
@@ -81,7 +90,12 @@ class ChurchesController extends BaseController {
         if (! $church) {
             echo "blank";
         } else {
-            return View::make('churches.edit')->with(array('route' => ['churches.update', $id], 'church' => $church, 'method' => 'PUT'));
+			$adoptions = Adoption::where('adoptionlink.church_id', $id)
+				->join('schools', 'adoptionlink.school_id', '=', 'schools.id')
+				->get(array('adoptionlink.id', 'schools.name'));
+
+			$school_options = array('' => 'Select One') + School::lists('name', 'id');
+            return View::make('churches.edit')->with(array('route' => ['churches.update', $id], 'church' => $church, 'method' => 'PUT', 'adoptions' => $adoptions, 'school_options' => $school_options));
         }
 	}
 
@@ -107,6 +121,29 @@ class ChurchesController extends BaseController {
         $church->pastor_email = Input::get('pastor_email');
         $church->save();
 
+		// update adoption links
+		// first check for any removed adoption_# inputs
+		// - loop through current adoptions, pull input and review value
+			$adoptions = Adoption::where('adoptionlink.church_id', $id)
+				->join('schools', 'adoptionlink.school_id', '=', 'schools.id')
+				->get(array('adoptionlink.id', 'schools.name'));
+		foreach ($adoptions as $adoption) {
+			if (Input::get('adoption_'.$adoption->id) == "removed") {
+				// remove from database
+				Adoption::find($adoption->id)->delete();
+			}
+		}
+
+		// next look at new_school_adopted for value
+		// - if value, save
+		$tmplink = Input::get('new_school_adopted');
+		if ($tmplink) {
+			$link = new Adoption;
+			$link->school_id = $tmplink;
+			$link->church_id = $id;
+			$link->save();
+		}
+		
         return Redirect::to('churches')->with('success', 'Church Updated');
 	}
 

@@ -1,9 +1,9 @@
 @extends('layouts.new')
 
 @section('content')
-                                       <div class="RightPanel">
-                                            <div style="">
-                                                <div class="SectionBlock">
+                                       <div id="_e11slg2_pnlView" class="RightPanel">
+                                            <div id="_e11slg32_pnlContainer" style="">
+                                                <div id="_e11slg32_section1_section" class="SectionBlock">
                                                     <div class="Header">
                                                         <table class="SectionTable">
                                                             <tbody>
@@ -12,7 +12,7 @@
 																		{{ Html::image('images/details.png', 'details', array('class' => 'Icon')) }}
                                                                     </td>
                                                                     <td>
-                                                                        <span class="Left">Home</span>
+                                                                        <span id="_e11slg32_section1_lblTitle" class="Left">Create User</span>
                                                                     </td>
                                                                     <td class="Right">
                                                                     </td>
@@ -20,14 +20,16 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-													<div class="Content">
-                                                        <div class="SLGworkspace" style="">
-															<br />
-															Welcome to the Iredell County CEF website.  Please enjoy!
-															
-														</div>
-													</div>
-												</div>
+													@include('Admin.users._form')
+	                                               </div>
                                             </div>
                                         </div>
+@stop
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#name").focus();
+    });
+</script>
 @stop

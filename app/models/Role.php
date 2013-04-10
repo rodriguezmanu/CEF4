@@ -4,6 +4,6 @@ use Toddish\Verify\Models\Role as VerifyRole;
 
 class Role extends VerifyRole
 {
-      // Code
+    protected $table = 'roles';
 }
 ?>

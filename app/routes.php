@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', array('before' => 'auth', function()
-{
+Route::get('/', array('before' => 'auth', function() {
     if (! Auth::check()) {
         return Redirect::to('/login');
     }
-    return View::make('home.index');
+
+	return View::make('home.index');
 }));
 
 Route::get('forgot-password', function() {
@@ -59,6 +59,7 @@ Route::get('/', function()
 
 // Before the user tries to access these resources, authenticate them
 Route::group(['before' => 'auth'], function() {
+	$user = Auth::user();
     Route::resource('schools', 'SchoolsController');
     Route::resource('churches', 'ChurchesController');
     Route::resource('students', 'StudentsController');
@@ -66,6 +67,14 @@ Route::group(['before' => 'auth'], function() {
     Route::resource('teachers', 'TeachersController');
     Route::resource('reports', 'ReportsController');
     Route::get('report1', 'ReportsController@pdf');
+	Route::get('profile', 'UsersController@profile');
+	Route::get('studentlist/{school_id}', 'StudentsController@studentlist');
+	Route::get('workerlist', 'WorkersController@workerlist');
+	
+	Route::group(array('prefix' => 'admin'), function() {
+		Route::resource('users', 'UsersController');
+		Route::resource('roles', 'RolesController');
+	});
 
 	Route::get('ajax/teacher-list/{id}', function($id) {
 		$teachers = DB::table('teachers')->select('id', 'lastname','firstname')->where('school_id', $id)->get();
@@ -78,4 +87,17 @@ Route::group(['before' => 'auth'], function() {
 		}
 		return $options;
 	});
+	Route::get('ajax/school-list', function() {
+		$schools = DB::table('schools')->select('id', 'name')->orderBy('name')->get();
+		$options = "";
+		if ($schools) {
+			$options = "<option value=''>Select School</option>\n";
+			foreach ($schools as $school) {
+				$options .= "<option value=".$school->id.">".$school->name."</option>\n";
+			}
+		}
+		return $options;
+	});
+
 });
+
