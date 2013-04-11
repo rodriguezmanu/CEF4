@@ -29,7 +29,7 @@
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#lastname").focus();
+        $("#firstname").focus();
     });
 </script>
 @stop

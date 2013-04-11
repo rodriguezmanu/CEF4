@@ -78,6 +78,8 @@ Route::group(['before' => 'auth'], function() {
 		}
 		return $options;
 	});
+
+	/* AJAX CALLS */
 	Route::get('ajax/school-list', function() {
 		$schools = DB::table('schools')->select('id', 'name')->orderBy('name')->get();
 		$options = "";
@@ -89,20 +91,18 @@ Route::group(['before' => 'auth'], function() {
 		}
 		return $options;
 	});
-	Route::get('ajax/student-list', function() {
-//	Route::get('ajax/student-list/{id}', function($id) {
-        $students = DB::table('students')->select('id','lastname','firstname','school_id');
-		return Datatables::of($students)->make();
 
-		$teachers = DB::table('teachers')->select('id', 'lastname','firstname')->where('school_id', $id)->get();
-		$options = "";
-		if ($teachers) {
-			$options = "<option value=''>Select Teacher</option>\n";
-			foreach ($teachers as $teacher) {
-				$options .= "<option value=".$teacher->id.">".$teacher->lastname."</option>\n";
+	Route::get('ajax/student-list/{id?}', function($id="") {
+		if (Request::ajax()) {
+			if ($id != "") {
+				$students = DB::table('students')->where('school_id', $id)->join('schools', 'school_id', '=', 'schools.id')->select('students.id','lastname','firstname','schools.name');
+			} else {
+				$students = DB::table('students')->join('schools', 'school_id', '=', 'schools.id')->select('students.id','lastname','firstname','schools.name');
 			}
+			return Datatables::of($students)->make();
+		} else {
+			App::abort(401, 'You are not authorized.');
 		}
-		return $options;
 	});
 
 });

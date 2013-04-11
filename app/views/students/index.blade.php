@@ -52,39 +52,72 @@
 @stop
 @section('scripts')
 <script type="text/javascript">
-var oTable;
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
 $(document).ready(function() {
 
-
-  oTable = $('#example').dataTable( {
-					"bProcessing": true,
-					"bServerSide": true,
-					"sAjaxSource": "ajax/student-list",
-					"bJQueryUI": true,
-					"sPaginationType": "full_numbers",
-                    "sDom": '<"H"Tfr>t<"F"ip>',
-                    "oLanguage": {
-                        "sZeroRecords": "No Records Found",
-                        "sSearch": "Search",
-                        "sProcessing": '<img alt="Spinner" src="images/spinner.gif" /> Processing'
-                    },
-                    "oTableTools": {
-                        "sSelectedClass": "row_selected",
-                        "sRowSelect": "single",
-						"aButtons": [
-							{
-								"sExtends":    "text",
-								"sButtonText": "New Student",
-								"fnClick": function ( nButton, oConfig, oFlash ) {
-									window.location.replace(BASE+'students/create');
-								}
-							}
-						],
-                    "fnRowSelected": function ( node ) {
-                        $(this).toggleClass('row_selected');
-                   }
-                    }
-				} );
+	$('#example').dataTable( {
+		"bProcessing": true,
+		"bServerSide": true,
+		"sAjaxSource": "ajax/student-list",
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers",
+		"sDom": '<"H"Tfr>t<"F"ip>',
+		"oLanguage": {
+			"sZeroRecords": "No Records Found",
+			"sSearch": "Search",
+			"sProcessing": '<img alt="Spinner" src="images/spinner.gif" /> Processing'
+		},
+		"oTableTools": {
+			"sSelectedClass": "row_selected",
+			"sRowSelect": "single",
+			"aButtons": [
+				{
+					"sExtends":    "text",
+					"sButtonText": "New Student",
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						self.location=BASE+'students/create';
+					}
+				},
+				{
+					"sExtends":    "text",
+					"sButtonText": "Edit Student",
+					"bSelectedOnly": "true",
+					"bHeader" : false,
+					"mColumns": [0],
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						var sData = this.fnGetTableData(oConfig);
+						if (isNumber(sData)) {
+							self.location=BASE+'students/'+sData+'/edit';
+						}
+					}
+				},
+				{
+					"sExtends":    "text",
+					"sButtonText": "Delete Student",
+					"bSelectedOnly": "true",
+					"bHeader" : false,
+					"mColumns": [0],
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						var sData = this.fnGetTableData(oConfig);
+						if (isNumber(sData)) {
+							var form = document.createElement("form");
+							$(form).attr("action", BASE+"students/"+sData)
+								   .attr("method", "post");
+							$(form).html('<input type="hidden" name="_method" value="delete" />');
+							document.body.appendChild(form);
+							$(form).submit();
+							document.body.removeChild(form);
+						}
+					}
+				}
+			],
+			"fnRowSelected": function ( node ) {
+				$(this).toggleClass('row_selected');
+		   }
+		}
+	});
 });
 </script>
 @stop

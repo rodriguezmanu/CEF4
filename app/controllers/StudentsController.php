@@ -24,9 +24,11 @@ class StudentsController extends BaseController {
 			App::abort(401, 'You are not authorized.');
 		}
         $per_page = 10;
-        $students = DB::table('students')->select('id','lastname','firstname')->where('school_id', $school_id)->paginate($per_page);
+        $students = DB::table('students')
+				->select('id','lastname','firstname', 'schools.name')
+				->where('school_id', $school_id)
+				->join('schools', 'school_id', '=', 'schools.id');
 		return Datatables::of($students)->make();
-        return View::make('students.index')->with('students', $students);
 	}
 
 	/**
