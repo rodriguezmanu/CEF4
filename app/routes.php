@@ -89,6 +89,21 @@ Route::group(['before' => 'auth'], function() {
 		}
 		return $options;
 	});
+	Route::get('ajax/student-list', function() {
+//	Route::get('ajax/student-list/{id}', function($id) {
+        $students = DB::table('students')->select('id','lastname','firstname','school_id');
+		return Datatables::of($students)->make();
+
+		$teachers = DB::table('teachers')->select('id', 'lastname','firstname')->where('school_id', $id)->get();
+		$options = "";
+		if ($teachers) {
+			$options = "<option value=''>Select Teacher</option>\n";
+			foreach ($teachers as $teacher) {
+				$options .= "<option value=".$teacher->id.">".$teacher->lastname."</option>\n";
+			}
+		}
+		return $options;
+	});
 
 });
 

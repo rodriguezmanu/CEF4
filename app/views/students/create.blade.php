@@ -1,9 +1,9 @@
 @extends('layouts.new')
 
 @section('content')
-                                       <div id="_e11slg2_pnlView" class="RightPanel">
-                                            <div id="_e11slg32_pnlContainer" style="">
-                                                <div id="_e11slg32_section1_section" class="SectionBlock">
+                                       <div class="RightPanel">
+                                            <div style="">
+                                                <div class="SectionBlock">
                                                     <div class="Header">
                                                         <table class="SectionTable">
                                                             <tbody>
@@ -12,7 +12,7 @@
 																		{{ Html::image('images/details.png', 'details', array('class' => 'Icon')) }}
                                                                     </td>
                                                                     <td>
-                                                                        <span id="_e11slg32_section1_lblTitle" class="Left">Add Student</span>
+                                                                        <span class="Left">Add Student</span>
                                                                     </td>
                                                                     <td class="Right">
                                                                     </td>
@@ -29,7 +29,7 @@
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#lastname").focus();
+        $("#firstname").focus();
     });
 </script>
 @stop

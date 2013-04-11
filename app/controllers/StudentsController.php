@@ -12,10 +12,8 @@ class StudentsController extends BaseController {
         if (Auth::user()->level(7, '<=')) {
             return Redirect::to('/');
         }
-        
-		$per_page = 15;
-		$students = Student::paginate($per_page);
-        return View::make('students.index')->with('students', $students);
+
+        return View::make('students.index');
 	}
 
 	public function studentlist($school_id)
@@ -25,8 +23,9 @@ class StudentsController extends BaseController {
 		if (DB::table('adoptionlink')->where('church_id', Auth::user()->church_id)->where('school_id', $school_id)->count()==0) {
 			App::abort(401, 'You are not authorized.');
 		}
-        $per_page = 15;
+        $per_page = 10;
         $students = DB::table('students')->select('id','lastname','firstname')->where('school_id', $school_id)->paginate($per_page);
+		return Datatables::of($students)->make();
         return View::make('students.index')->with('students', $students);
 	}
 

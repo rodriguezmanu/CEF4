@@ -7,6 +7,9 @@
     <link rel="shortcut icon" href="{{ URL::asset('images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/shared.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/examples/examples_support/themes/smoothness/jquery-ui-1.8.4.custom.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/extras/TableTools/media/css/TableTools_JUI.css') }}">
 </head>
 <body class="Main slg">
 
@@ -66,7 +69,7 @@
                 </div>
             </div>
             <br>
-            <span class="copyright">Copyright Â©2013 PemFam Corporation - <a href="javascript:void(window.open('{{URL::to('/TOS')}}', 'UserWeb_Terms_of_Use'));"
+            <span class="copyright">Copyright ©2013 PemFam Corporation - <a href="javascript:void(window.open('{{URL::to('/TOS')}}', 'UserWeb_Terms_of_Use'));"
                 style="color: White; text-decoration: underline;">
                 Terms of Use </a></span>
         </center>
@@ -89,10 +92,12 @@
     </div>
 	
 	<script type="text/javascript">var BASE = '<?php echo "http://mpemberton.dyndns.org/lois4/" ?>';</script>
-	<script src="{{ URL::asset('js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('js/DataTables-1.9.4/media/js/jquery.js') }}"></script>
+	<script src="{{ URL::asset('js/jquery-ui.js') }}"></script>
 	<script src="{{ URL::asset('js/bootstrap-dropdown.js') }}"></script>
 	<script src="{{ URL::asset('js/application.js') }}"></script>
-	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script src="{{ URL::asset('js/DataTables-1.9.4/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ URL::asset('js/DataTables-1.9.4/extras/TableTools/media/js/TableTools.js') }}"></script>
 	@yield('scripts')
 </body>
 </html>

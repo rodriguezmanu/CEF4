@@ -3,7 +3,8 @@
 		"laravel/framework": "4.0.*",
         "way/generators": "dev-master",
         "toddish/verify": "dev-master",
-        "itbz/fpdf": "dev-master"
+        "itbz/fpdf": "dev-master",
+        "magd-kudama/datatables": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

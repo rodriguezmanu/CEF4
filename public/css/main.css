@@ -3285,3 +3285,11 @@ table.pogi td
     font-style:italic;
 }
 .cbl_container { border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll; }
+
+table.display tr.even.row_selected td {
+    background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+    background-color: #9FAFD1;
+}

@@ -101,6 +101,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Toddish\Verify\VerifyServiceProvider',
+        'MagdKudama\Datatables\DatatablesServiceProvider',
 
 	),
 
@@ -166,6 +167,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+        'Datatables'      => 'MagdKudama\Datatables\Facades\Datatables',
 
 	),
 

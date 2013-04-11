@@ -20,28 +20,71 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
+													<br />
 													<div class="Content">
                                                         <div class="SLGworkspace" style="">
-															<table width="500px">
-																<tbody>
-																@foreach($students as $student)
+															<table id="example" class="display">
+																<thead>
 																	<tr>
-																	<td>
-																	{{ Html::linkAction('StudentsController@edit', $student->lastname.', '.$student->firstname, array($student->id)) }}
-																	</td>
-																	<td>
-																		{{ Form::model($student, [ 'method' => 'DELETE', 'route' => ['students.destroy', $student->id] ]) }}
-																		{{ Form::submit('DELETE') }}
-																		{{ Form::close() }}
-																	</td>
+																		<th width="30px">ID</th>
+																		<th>Last Name</th>
+																		<th>First Name</th>
+																		<th>School</th>
 																	</tr>
-																@endforeach
+																</thead>
+																<tbody>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
 																</tbody>
 															</table>
-															{{$students->links()}}
 														</div>
 													</div>
 												</div>
                                             </div>
                                         </div>
+@stop
+@section('scripts')
+<script type="text/javascript">
+var oTable;
+$(document).ready(function() {
+
+
+  oTable = $('#example').dataTable( {
+					"bProcessing": true,
+					"bServerSide": true,
+					"sAjaxSource": "ajax/student-list",
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+                    "sDom": '<"H"Tfr>t<"F"ip>',
+                    "oLanguage": {
+                        "sZeroRecords": "No Records Found",
+                        "sSearch": "Search",
+                        "sProcessing": '<img alt="Spinner" src="images/spinner.gif" /> Processing'
+                    },
+                    "oTableTools": {
+                        "sSelectedClass": "row_selected",
+                        "sRowSelect": "single",
+						"aButtons": [
+							{
+								"sExtends":    "text",
+								"sButtonText": "New Student",
+								"fnClick": function ( nButton, oConfig, oFlash ) {
+									window.location.replace(BASE+'students/create');
+								}
+							}
+						],
+                    "fnRowSelected": function ( node ) {
+                        $(this).toggleClass('row_selected');
+                   }
+                    }
+				} );
+});
+</script>
 @stop
