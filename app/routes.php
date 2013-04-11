@@ -80,18 +80,38 @@ Route::group(['before' => 'auth'], function() {
 	});
 
 	/* AJAX CALLS */
-	Route::get('ajax/school-list', function() {
-		$schools = DB::table('schools')->select('id', 'name')->orderBy('name')->get();
-		$options = "";
-		if ($schools) {
-			$options = "<option value=''>Select School</option>\n";
-			foreach ($schools as $school) {
-				$options .= "<option value=".$school->id.">".$school->name."</option>\n";
+	Route::get('ajax/school-list-dd', function() {
+		if (Request::ajax()) {
+			$schools = DB::table('schools')->select('id', 'name')->orderBy('name')->get();
+			$options = "";
+			if ($schools) {
+				$options = "<option value=''>Select School</option>\n";
+				foreach ($schools as $school) {
+					$options .= "<option value=".$school->id.">".$school->name."</option>\n";
+				}
 			}
+			return $options;
+		} else {
+			App::abort(401, 'You are not authorized.');
 		}
-		return $options;
 	});
 
+	Route::get('ajax/church-list', function() {
+		if (Request::ajax()) {
+			$results = DB::table('churches')->select('churches.id','name');
+			return Datatables::of($results)->make();
+		} else {
+			App::abort(401, 'You are not authorized.');
+		}
+	});
+	Route::get('ajax/school-list', function() {
+		if (Request::ajax()) {
+			$results = DB::table('schools')->select('schools.id','name');
+			return Datatables::of($results)->make();
+		} else {
+			App::abort(401, 'You are not authorized.');
+		}
+	});
 	Route::get('ajax/student-list/{id?}', function($id="") {
 		if (Request::ajax()) {
 			if ($id != "") {
@@ -100,6 +120,22 @@ Route::group(['before' => 'auth'], function() {
 				$students = DB::table('students')->join('schools', 'school_id', '=', 'schools.id')->select('students.id','lastname','firstname','schools.name');
 			}
 			return Datatables::of($students)->make();
+		} else {
+			App::abort(401, 'You are not authorized.');
+		}
+	});
+	Route::get('ajax/teacher-list', function() {
+		if (Request::ajax()) {
+			$results = DB::table('teachers')->select('teachers.id','lastname','firstname');
+			return Datatables::of($results)->make();
+		} else {
+			App::abort(401, 'You are not authorized.');
+		}
+	});
+	Route::get('ajax/worker-list', function() {
+		if (Request::ajax()) {
+			$results = DB::table('workers')->select('workers.id','lastname','firstname');
+			return Datatables::of($results)->make();
 		} else {
 			App::abort(401, 'You are not authorized.');
 		}

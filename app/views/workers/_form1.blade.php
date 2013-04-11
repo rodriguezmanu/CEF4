@@ -94,11 +94,17 @@
                                                                         <td class="label">
                                                                             {{ Form::label('backgroundcheckdate', 'Background Check Date: ') }}
                                                                         </td>
-                                                                        <td colspan="3">
+                                                                        <td>
                                                                             {{ Form::text('backgroundcheckdate', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
 																			<a onclick="alert('hi');return false;">
 																				{{ Form::input('image','calendar', null, array('src' => URL::asset('images/calendar.gif'), 'align' => 'absmiddle')) }}
 																			</a>
+                                                                        </td>
+                                                                        <td class="label">
+                                                                            {{ Form::label('status', 'Status: ') }}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{ Form::select('status', ['' => 'Select One', '0' => 'Inactive', '1' => 'Active']) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

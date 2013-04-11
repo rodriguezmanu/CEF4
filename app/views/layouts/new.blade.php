@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ URL::asset('images/favicon.ico') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/shared.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/examples/examples_support/themes/smoothness/jquery-ui-1.8.4.custom.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('js/DataTables-1.9.4/extras/TableTools/media/css/TableTools_JUI.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
 </head>
 <body class="Main slg">
 

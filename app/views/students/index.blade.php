@@ -49,13 +49,38 @@
 												</div>
                                             </div>
                                         </div>
+										<div id="dialog-confirm" title="Delete Selected Student?">
+											<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>You are about to permenantly delete the selected student. Are you sure?</p>
+										</div>
 @stop
 @section('scripts')
 <script type="text/javascript">
+var sData = " ";
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 $(document).ready(function() {
+    $( "#dialog-confirm" ).dialog({
+		autoOpen: false,
+      resizable: false,
+      height:240,
+      modal: true,
+      buttons: {
+        "Delete Student": function() {
+			var form = document.createElement("form");
+			$(form).attr("action", BASE+"students/"+sData)
+				   .attr("method", "post");
+			$(form).html('<input type="hidden" name="_method" value="delete" />');
+			document.body.appendChild(form);
+			$(form).submit();
+			document.body.removeChild(form);
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
 
 	$('#example').dataTable( {
 		"bProcessing": true,
@@ -102,13 +127,7 @@ $(document).ready(function() {
 					"fnClick": function ( nButton, oConfig, oFlash ) {
 						var sData = this.fnGetTableData(oConfig);
 						if (isNumber(sData)) {
-							var form = document.createElement("form");
-							$(form).attr("action", BASE+"students/"+sData)
-								   .attr("method", "post");
-							$(form).html('<input type="hidden" name="_method" value="delete" />');
-							document.body.appendChild(form);
-							$(form).submit();
-							document.body.removeChild(form);
+							$( "#dialog-confirm" ).dialog( "open" );
 						}
 					}
 				}

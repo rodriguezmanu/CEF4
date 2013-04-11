@@ -20,28 +20,121 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
+													<br />
 													<div class="Content">
                                                         <div class="SLGworkspace" style="">
-															<table width="500px">
-																<tbody>
-																@foreach($schools as $school)
+															<table id="example" class="display">
+																<thead>
 																	<tr>
-																	<td>
-																	{{ Html::linkAction('SchoolsController@edit', $school->name, array($school->id)) }}
-																	</td>
-																	<td>
-																		{{ Form::model($school, [ 'method' => 'DELETE', 'route' => ['schools.destroy', $school->id] ]) }}
-																		{{ Form::submit('DELETE') }}
-																		{{ Form::close() }}
-																	</td>
+																		<th width="30px">ID</th>
+																		<th>Name</th>
 																	</tr>
-																@endforeach
+																</thead>
+																<tbody>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
+                                                                    <tr><td></td></tr>
 																</tbody>
 															</table>
-															{{$schools->links()}}
 														</div>
 													</div>
 												</div>
                                             </div>
                                         </div>
+										<div id="dialog-confirm" title="Delete Selected School?">
+											<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>You are about to permenantly delete the selected school. Are you sure?</p>
+										</div>
+@stop
+@section('scripts')
+<script type="text/javascript">
+var sData = " ";
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+$(document).ready(function() {
+    $( "#dialog-confirm" ).dialog({
+		autoOpen: false,
+      resizable: false,
+      height:240,
+      modal: true,
+      buttons: {
+        "Delete School": function() {
+			var form = document.createElement("form");
+			$(form).attr("action", BASE+"schools/"+sData)
+				   .attr("method", "post");
+			$(form).html('<input type="hidden" name="_method" value="delete" />');
+			document.body.appendChild(form);
+			$(form).submit();
+			document.body.removeChild(form);
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+	$('#example').dataTable( {
+		"bProcessing": true,
+		"bServerSide": true,
+		"sAjaxSource": "ajax/school-list",
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers",
+		"sDom": '<"H"Tfr>t<"F"ip>',
+		"oLanguage": {
+			"sZeroRecords": "No Records Found",
+			"sSearch": "Search",
+			"sProcessing": '<img alt="Spinner" src="images/spinner.gif" /> Processing'
+		},
+		"oTableTools": {
+			"sSelectedClass": "row_selected",
+			"sRowSelect": "single",
+			"aButtons": [
+				{
+					"sExtends":    "text",
+					"sButtonText": "New School",
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						self.location=BASE+'schools/create';
+					}
+				},
+				{
+					"sExtends":    "text",
+					"sButtonText": "Edit School",
+					"bSelectedOnly": "true",
+					"bHeader" : false,
+					"mColumns": [0],
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						var sData = this.fnGetTableData(oConfig);
+						if (isNumber(sData)) {
+							self.location=BASE+'schools/'+sData+'/edit';
+						}
+					}
+				},
+				{
+					"sExtends":    "text",
+					"sButtonText": "Delete School",
+					"bSelectedOnly": "true",
+					"bHeader" : false,
+					"mColumns": [0],
+					"fnClick": function ( nButton, oConfig, oFlash ) {
+						var sData = this.fnGetTableData(oConfig);
+						if (isNumber(sData)) {
+							$( "#dialog-confirm" ).dialog( "open" );
+						}
+					}
+				}
+			],
+			"fnRowSelected": function ( node ) {
+				$(this).toggleClass('row_selected');
+		   }
+		}
+	});
+});
+</script>
 @stop
