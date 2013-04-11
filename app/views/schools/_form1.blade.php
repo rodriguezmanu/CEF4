@@ -101,7 +101,7 @@
                                                             <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<a href="{{ URL::to('schools'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<button onClick="javascript: window.location='{{ URL::to('schools'); }}'">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>

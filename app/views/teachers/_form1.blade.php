@@ -30,7 +30,7 @@
                                                             <div style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<a href="{{ URL::to('teachers'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																<button onClick="javascript: window.location='{{ URL::to('teachers'); }}'">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>

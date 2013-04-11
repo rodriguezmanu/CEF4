@@ -127,9 +127,9 @@
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
 																<?php if (Auth::user()->level(7, '>=')) { ?>
-																	<a href="{{ URL::to('workers'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																	<button onClick="javascript: window.location='{{ URL::to('workers'); }}'">Cancel</button>
 																<?php } else if (Auth::user()->level(7, '<=')) { ?>
-																	<a href="{{ URL::to('workerlist'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+																	<button onClick="javascript: window.location='{{ URL::to('workerlist'); }}'; return false;">Cancel</button>
 																<?php } ?>
                                                             </div>
                                                         </div>

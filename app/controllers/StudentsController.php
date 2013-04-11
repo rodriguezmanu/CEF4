@@ -16,19 +16,25 @@ class StudentsController extends BaseController {
         return View::make('students.index');
 	}
 
-	public function studentlist($school_id)
+	public function studentlist($school_id = "")
 	{
-		// first check if current user is connected to school (via church adoptionlink)
-		// user->church_id = adoptionlink->church_id and adoptionlink->school_id = $school_id
-		if (DB::table('adoptionlink')->where('church_id', Auth::user()->church_id)->where('school_id', $school_id)->count()==0) {
-			App::abort(401, 'You are not authorized.');
+		if ($school_id == "") {
+			App::abort(401, 'No identifier');
 		}
-        $per_page = 10;
-        $students = DB::table('students')
-				->select('id','lastname','firstname', 'schools.name')
-				->where('school_id', $school_id)
-				->join('schools', 'school_id', '=', 'schools.id');
-		return Datatables::of($students)->make();
+		
+        return View::make('students.index')->with('school_id', $school_id);
+
+		//first check if current user is connected to school (via church adoptionlink)
+		//user->church_id = adoptionlink->church_id and adoptionlink->school_id = $school_id
+		// if (DB::table('adoptionlink')->where('church_id', Auth::user()->church_id)->where('school_id', $school_id)->count()==0) {
+			// App::abort(401, 'You are not authorized.');
+		// }
+        // $per_page = 10;
+        // $students = DB::table('students')
+				// ->select('id','lastname','firstname', 'schools.name')
+				// ->where('school_id', $school_id)
+				// ->join('schools', 'school_id', '=', 'schools.id');
+		// return Datatables::of($students)->make();
 	}
 
 	/**

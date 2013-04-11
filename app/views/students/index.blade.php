@@ -85,14 +85,14 @@ $(document).ready(function() {
 	$('#example').dataTable( {
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "ajax/student-list",
+		"sAjaxSource": BASE+"ajax/student-list<?php if (isset($school_id)) { echo "/".$school_id; } ?>",
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
 		"sDom": '<"H"Tfr>t<"F"ip>',
 		"oLanguage": {
 			"sZeroRecords": "No Records Found",
 			"sSearch": "Search",
-			"sProcessing": '<img alt="Spinner" src="images/spinner.gif" /> Processing'
+			"sProcessing": '<img alt="Spinner" src="'+BASE+'images/spinner.gif" /> Processing'
 		},
 		"oTableTools": {
 			"sSelectedClass": "row_selected",

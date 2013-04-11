@@ -13,13 +13,12 @@ class WorkersController extends BaseController {
             return Redirect::to('/');
         }
 
-		$per_page = 15;
-		$workers = Worker::paginate($per_page);
-        return View::make('workers.index')->with('workers', $workers);
+        return View::make('workers.index');
 	}
 
 	public function workerlist()
 	{
+		return View::make('workers.index');
 		// first check if current user is connected to school (via church adoptionlink)
 		// user->church_id = adoptionlink->church_id and adoptionlink->school_id = $school_id
 		if (DB::table('adoptionlink')->where('church_id', Auth::user()->church_id)->count()) {

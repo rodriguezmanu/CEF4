@@ -59,7 +59,7 @@ Route::group(['before' => 'auth'], function() {
 
     Route::get('report1', 'ReportsController@pdf');
 	Route::get('profile', 'UsersController@profile');
-	Route::get('studentlist/{school_id}', 'StudentsController@studentlist');
+	Route::get('studentlist/{school_id?}', 'StudentsController@studentlist');
 	Route::get('workerlist', 'WorkersController@workerlist');
 	
 	Route::group(array('prefix' => 'admin'), function() {
@@ -134,7 +134,14 @@ Route::group(['before' => 'auth'], function() {
 	});
 	Route::get('ajax/worker-list', function() {
 		if (Request::ajax()) {
-			$results = DB::table('workers')->select('workers.id','lastname','firstname');
+			if (Auth::user()->level(7, '<=')) {
+				$results = DB::table('workers')
+                ->select('workers.id','lastname','firstname')
+                ->join('churches', 'workers.church_id', '=', 'churches.id')
+                ->where('churches.id', Auth::user()->church_id);
+			} else {
+				$results = DB::table('workers')->select('workers.id','lastname','firstname');
+			}
 			return Datatables::of($results)->make();
 		} else {
 			App::abort(401, 'You are not authorized.');
