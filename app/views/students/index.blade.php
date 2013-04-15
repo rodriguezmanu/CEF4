@@ -49,7 +49,7 @@
 												</div>
                                             </div>
                                         </div>
-										<div id="dialog-confirm" title="Delete Selected Student?">
+										<div id="dialog-confirm" title="Delete Selected Student?" style="display:none;">
 											<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>You are about to permenantly delete the selected student. Are you sure?</p>
 										</div>
 @stop

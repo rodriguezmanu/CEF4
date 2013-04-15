@@ -127,7 +127,7 @@
                                                             <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<button onClick="javascript: window.location='{{ URL::to('churches'); }}'; return false;">Cancel</button>
+																<input type="button" onClick="window.location='{{ URL::to('churches'); }}'; return false;" value="Cancel" />
                                                             </div>
                                                         </div>
                                                     </div>

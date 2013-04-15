@@ -193,10 +193,9 @@
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
 																<?php if (Auth::user()->level(7, '>=')) { ?>
-																	<a href="{{ URL::to('students'); }}" class="btn">{{ Form::button('Cancel') }}</a>
-
+																	<input type="button" onClick="window.location='{{ URL::to('students'); }}'; return false;" value="Cancel" />
 																<?php } else if (Auth::user()->level(7, '<=')) { ?>
-                                                                    <button onClick="javascript: window.location='{{ URL::to('studentlist', $student->school_id); }}'; return false;">Cancel</button>
+																	<input type="button" onClick="window.location='{{ to('studentlist', $student->school_id); }}'; return false;" value="Cancel" />
 																<?php } ?>
                                                             </div>
                                                         </div>
