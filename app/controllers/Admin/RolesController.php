@@ -71,7 +71,7 @@ class RolesController extends BaseController {
         if (! $role) {
             echo "blank";
         } else {
-            return View::make('Admin.roles.edit')->with(array('route' => ['Admin.roles.update', $id], 'role' => $role, 'method' => 'PUT'));
+            return View::make('Admin.roles.edit')->with(array('route' => array('Admin.roles.update', $id), 'role' => $role, 'method' => 'PUT'));
         }
 	}
 

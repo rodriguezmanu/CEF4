@@ -1,4 +1,4 @@
-{{ Form::model($user, ['route' => $route, 'method' => $method]) }}
+{{ Form::model($user, array('route' => $route, 'method' => $method)) }}
                                                     <div class="Content">
                                                         <div id="_e11slg9_pnlContainer" class="SLGworkspace" style="">
                                                             <table class="detailsTable">
@@ -8,7 +8,7 @@
                                                                             {{ Form::label('username', 'Username: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-																			{{ Form::text('username', null, ['style' => 'width: 300px', 'maxlength' => 40]) }}
+																			{{ Form::text('username', null, array('style' => 'width: 300px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
 																	<?php if ($user->exists == false) {?>
@@ -17,7 +17,7 @@
                                                                             {{ Form::label('password', 'Password: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-                                                                            {{ Form::text('password', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('password', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
 																	<?php } ?>
@@ -26,7 +26,7 @@
                                                                             {{ Form::label('email', 'Email: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('email', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('email', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('verified', 'Verified: ') }}

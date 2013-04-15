@@ -1,4 +1,4 @@
-{{ Form::model($church, ['route' => $route, 'method' => $method]) }}
+{{ Form::model($church, array('route' => $route, 'method' => $method)) }}
                                                     <div class="Content">
                                                         <div id="_e11slg9_pnlContainer" class="SLGworkspace" style="">
                                                             <table class="detailsTable">
@@ -8,7 +8,7 @@
                                                                             {{ Form::label('name', 'Name: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-																			{{ Form::text('name', null, ['style' => 'width: 300px', 'maxlength' => 40]) }}
+																			{{ Form::text('name', null, array('style' => 'width: 300px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -16,7 +16,7 @@
                                                                             {{ Form::label('address1', 'Address 1: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-                                                                            {{ Form::text('address1', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('address1', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -24,13 +24,13 @@
                                                                             {{ Form::label('address2', 'Address 2: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('address2', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('address2', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('phone', 'Phone: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('phone', null, ['maxlength' => 40]) }}
+                                                                            {{ Form::text('phone', null, array('maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -38,13 +38,13 @@
                                                                             {{ Form::label('city', 'City: ') }}
                                                                         </td>
                                                                         <td width='300px'>
-                                                                            {{ Form::text('city', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('city', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('fax', 'Fax: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('fax', null, ['maxlength' => 40]) }}
+                                                                            {{ Form::text('fax', null, array('maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -52,7 +52,7 @@
                                                                             {{ Form::label('state', 'State: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-                                                                            {{ Form::text('state', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('state', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
 
                                                                     </tr>
@@ -61,7 +61,7 @@
                                                                             {{ Form::label('zip', 'Zip: ') }}
                                                                         </td>
                                                                         <td colspan="3">
-                                                                            {{ Form::text('zip', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('zip', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -77,13 +77,13 @@
 																				{{ Form::label('pastor_first_name', 'First Name: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('pastor_first_name', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('pastor_first_name', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('pastor_last_name', 'Last Name: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('pastor_last_name', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('pastor_last_name', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		</tr>
 																		<tr>
@@ -91,7 +91,7 @@
 																				{{ Form::label('pastor_email', 'Email: ') }}
 																			</td>
 																			<td colspan="3">
-																				{{ Form::text('pastor_email', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('pastor_email', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		</tr>
 																		</tbody>
@@ -127,7 +127,7 @@
                                                             <div id="_e11slg9_lblButtons" style="margin-top: 15px; text-align: left; width: 100%;">
                                                                 {{ Form::submit('Save Changes') }}
                                                                 &nbsp
-																<button onClick="javascript: window.location='{{ URL::to('churches'); }}'">Cancel</button>
+																<button onClick="javascript: window.location='{{ URL::to('churches'); }}'; return false;">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>

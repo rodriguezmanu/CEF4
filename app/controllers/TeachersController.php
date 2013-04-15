@@ -77,7 +77,7 @@ class TeachersController extends BaseController {
             echo "blank";
         } else {
 			$school_options = array('' => 'Select One') + School::lists('name', 'id');
-            return View::make('teachers.edit')->with(array('route' => ['teachers.update', $id], 'teacher' => $teacher, 'method' => 'PUT', 'school_options' => $school_options));
+            return View::make('teachers.edit')->with(array('route' => array('teachers.update', $id), 'teacher' => $teacher, 'method' => 'PUT', 'school_options' => $school_options));
         }
 	}
 

@@ -1,4 +1,4 @@
-{{ Form::model($student, ['route' => $route, 'method' => $method]) }}
+{{ Form::model($student, array('route' => $route, 'method' => $method)) }}
                                                     <div class="Content">
                                                         <div class="SLGworkspace" style="">
                                                             <table class="detailsTable">
@@ -8,13 +8,13 @@
                                                                             {{ Form::label('firstname', 'First Name: ') }}
                                                                         </td>
                                                                         <td width="300px">
-																			{{ Form::text('firstname', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																			{{ Form::text('firstname', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('lastname', 'Last Name: ') }}
                                                                         </td>
                                                                         <td>
-																			{{ Form::text('lastname', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																			{{ Form::text('lastname', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -22,7 +22,7 @@
                                                                             {{ Form::label('address1', 'Address 1: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('address1', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('address1', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('status', 'Status: ') }}
@@ -36,13 +36,13 @@
                                                                             {{ Form::label('address2', 'Address 2: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('address2', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('address2', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('homephone', 'Home Phone: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('homephone', null, ['maxlength' => 40]) }}
+                                                                            {{ Form::text('homephone', null, array('maxlength' => 40)) }}
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -50,7 +50,7 @@
                                                                             {{ Form::label('city', 'City: ') }}
                                                                         </td>
                                                                         <td width='300px'>
-                                                                            {{ Form::text('city', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('city', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('photorelease', 'Photo Release: ') }}
@@ -64,7 +64,7 @@
                                                                             {{ Form::label('state', 'State: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('state', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('state', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('sex', 'Gender: ') }}
@@ -78,7 +78,7 @@
                                                                             {{ Form::label('zip', 'Zip: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('zip', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+                                                                            {{ Form::text('zip', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('birthdate', 'BirthDate: ') }}
@@ -126,7 +126,7 @@
 																				{{ Form::label('allergies', 'Allergies: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('allergies', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('allergies', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('attendschurch_id', 'Attends Church: ') }}
@@ -150,19 +150,19 @@
 																				{{ Form::label('dadname', 'Dad Name: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('dadname', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('dadname', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('dadphone', 'Phone: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('dadphone', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('dadphone', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('dademail', 'Email: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('dademail', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('dademail', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		</tr>
 																		<tr>
@@ -170,19 +170,19 @@
 																				{{ Form::label('momname', 'Mom Name: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('momname', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('momname', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('momphone', 'Phone: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('momphone', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('momphone', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('momemail', 'Email: ') }}
 																			</td>
 																			<td>
-																				{{ Form::text('momemail', null, ['style' => 'width: 180px', 'maxlength' => 40]) }}
+																				{{ Form::text('momemail', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
 																			</td>
 																		</tr>
 																		</tbody>
@@ -194,8 +194,9 @@
                                                                 &nbsp
 																<?php if (Auth::user()->level(7, '>=')) { ?>
 																	<a href="{{ URL::to('students'); }}" class="btn">{{ Form::button('Cancel') }}</a>
+
 																<?php } else if (Auth::user()->level(7, '<=')) { ?>
-																	<a href="{{ URL::to('studentlist', $student->school_id); }}" class="btn">{{ Form::button('Cancel') }}</a>
+                                                                    <button onClick="javascript: window.location='{{ URL::to('studentlist', $student->school_id); }}'; return false;">Cancel</button>
 																<?php } ?>
                                                             </div>
                                                         </div>

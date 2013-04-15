@@ -33,7 +33,7 @@
 																	{{ Html::linkAction('UsersController@edit', $user->username, array($user->id)) }}
 																	</td>
 																	<td>
-																		{{ Form::model($user, [ 'method' => 'DELETE', 'route' => ['admin.users.destroy', $user->id] ]) }}
+																		{{ Form::model($user, array('method' => 'DELETE', 'route' => array('admin.users.destroy', $user->id) )) }}
 																		{{ Form::submit('DELETE') }}
 																		{{ Form::close() }}
 																	</td>

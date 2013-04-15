@@ -83,7 +83,7 @@ class UsersController extends BaseController {
         } else {
 			$roles = Role::all();
 			$church_options = array('' => 'Select One') + Church::lists('name', 'id');
-            return View::make('Admin.users.edit')->with(array('route' => ['admin.users.update', $id], 'user' => $user, 'method' => 'PUT', 'roles' => $roles, 'church_options' => $church_options));
+            return View::make('Admin.users.edit')->with(array('route' => array('admin.users.update', $id), 'user' => $user, 'method' => 'PUT', 'roles' => $roles, 'church_options' => $church_options));
         }
 	}
 
@@ -126,7 +126,7 @@ class UsersController extends BaseController {
 		$roles = Role::all();
 		$church_options = array('' => 'Select One') + Church::lists('name', 'id');
 		return "this might be a user profile screen one day when it grows up";
-        return View::make('Admin.users.profile')->with(array('route' => ['admin.users.update', $id], 'user' => $user, 'method' => 'PUT', 'roles' => $roles, 'church_options' => $church_options));
+        return View::make('Admin.users.profile')->with(array('route' => array('admin.users.update', $id), 'user' => $user, 'method' => 'PUT', 'roles' => $roles, 'church_options' => $church_options));
 
 	}
 }

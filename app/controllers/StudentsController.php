@@ -133,7 +133,7 @@ class StudentsController extends BaseController {
 			$school_options = array('' => 'Select One') + School::lists('name', 'id');
 			$teacher_options = array('' => 'Select One') + Teacher::where('school_id', $student->school_id)->lists('lastname', 'id');
             $dismissal_options = array('1' => 'Pick up', '2' => 'Deliver');
-            return View::make('students.edit')->with(array('route' => ['students.update', $id], 'student' => $student, 'method' => 'PUT', 'church_options' => $church_options, 'school_options' => $school_options, 'teacher_options' => $teacher_options, 'dismissal_options' => $dismissal_options));
+            return View::make('students.edit')->with(array('route' => array('students.update', $id), 'student' => $student, 'method' => 'PUT', 'church_options' => $church_options, 'school_options' => $school_options, 'teacher_options' => $teacher_options, 'dismissal_options' => $dismissal_options));
 
 	}
 

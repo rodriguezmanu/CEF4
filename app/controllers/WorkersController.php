@@ -112,7 +112,7 @@ class WorkersController extends BaseController {
         }
 
         $church_options = array('' => 'Select One') + Church::lists('name', 'id');
-        return View::make('workers.edit')->with(array('route' => ['workers.update', $id], 'worker' => $worker, 'method' => 'PUT', 'church_options' => $church_options));
+        return View::make('workers.edit')->with(array('route' => array('workers.update', $id), 'worker' => $worker, 'method' => 'PUT', 'church_options' => $church_options));
 	}
 
 	/**

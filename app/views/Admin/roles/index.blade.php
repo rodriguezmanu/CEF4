@@ -30,7 +30,7 @@
 																	{{ Html::linkAction('RolesController@edit', $role->name, array($role->id)) }}
 																	</td>
 																	<td>
-																		{{ Form::model($role, [ 'method' => 'DELETE', 'route' => ['admin.roles.destroy', $role->id] ]) }}
+																		{{ Form::model($role, array('method' => 'DELETE', 'route' => array('admin.roles.destroy', $role->id) )) }}
 																		{{ Form::submit('DELETE') }}
 																		{{ Form::close() }}
 																	</td>

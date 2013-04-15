@@ -99,7 +99,7 @@ class ChurchesController extends BaseController {
 				->get(array('adoptionlink.id', 'schools.name'));
 
 			$school_options = array('' => 'Select One') + School::lists('name', 'id');
-            return View::make('churches.edit')->with(array('route' => ['churches.update', $id], 'church' => $church, 'method' => 'PUT', 'adoptions' => $adoptions, 'school_options' => $school_options));
+            return View::make('churches.edit')->with(array('route' => array('churches.update', $id), 'church' => $church, 'method' => 'PUT', 'adoptions' => $adoptions, 'school_options' => $school_options));
         }
 	}
 

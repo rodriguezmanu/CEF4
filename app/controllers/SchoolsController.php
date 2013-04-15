@@ -81,7 +81,7 @@ class SchoolsController extends BaseController {
         if (! $school) {
             echo "blank";
         } else {
-            return View::make('schools.edit')->with(array('route' => ['schools.update', $id], 'school' => $school, 'method' => 'PUT'));
+            return View::make('schools.edit')->with(array('route' => array('schools.update', $id), 'school' => $school, 'method' => 'PUT'));
         }
 	}
 

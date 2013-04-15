@@ -111,7 +111,7 @@ $(document).ready(function() {
 					"bHeader" : false,
 					"mColumns": [0],
 					"fnClick": function ( nButton, oConfig, oFlash ) {
-						var sData = this.fnGetTableData(oConfig);
+						sData = this.fnGetTableData(oConfig);
 						if (isNumber(sData)) {
 							self.location=BASE+'teachers/'+sData+'/edit';
 						}
@@ -124,7 +124,7 @@ $(document).ready(function() {
 					"bHeader" : false,
 					"mColumns": [0],
 					"fnClick": function ( nButton, oConfig, oFlash ) {
-						var sData = this.fnGetTableData(oConfig);
+						sData = this.fnGetTableData(oConfig);
 						if (isNumber(sData)) {
 							$( "#dialog-confirm" ).dialog( "open" );
 						}
