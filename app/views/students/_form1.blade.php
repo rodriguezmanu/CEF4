@@ -195,7 +195,7 @@
 																<?php if (Auth::user()->level(7, '>=')) { ?>
 																	<input type="button" onClick="window.location='{{ URL::to('students'); }}'; return false;" value="Cancel" />
 																<?php } else if (Auth::user()->level(7, '<=')) { ?>
-																	<input type="button" onClick="window.location='{{ to('studentlist', $student->school_id); }}'; return false;" value="Cancel" />
+																	<input type="button" onClick="window.location='{{ URL::to('studentlist', $student->school_id); }}'; return false;" value="Cancel" />
 																<?php } ?>
                                                             </div>
                                                         </div>

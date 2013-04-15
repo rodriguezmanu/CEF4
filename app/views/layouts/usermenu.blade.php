@@ -28,7 +28,7 @@
 																<span class="Left"><b>{{ $school->name }}</b></span>
 																<ul>
 																	<li><a href="{{URL::action('StudentsController@studentlist', $school->id )}}" title="View list of Students">Students</a></li>
-																	<li><a href="{{URL::action('ReportsController@userindex')}}" title="View list of Reports">Reports</a></li>
+																	<li><a href="{{URL::action('ReportsController@index')}}" title="View list of Reports">Reports</a></li>
 																</ul>
 															</span>
 														@endforeach
