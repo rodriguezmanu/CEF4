@@ -74,7 +74,13 @@ class WorkersController extends BaseController {
 		$worker->workphone = Input::get('workphone');
         $worker->email = Input::get('email');
         $worker->tagname = Input::get('tagname');
-        $worker->backgroundcheckdate = Input::get('backgroundcheckdate');
+        $tmpdate = Input::get('backgroundcheckdate');
+        if ($tmpdate) {
+            $tmpdate = date('Y-m-d',(strtotime($tmpdate)));
+        } else {
+            $tmpdate = null;
+        }
+        $worker->backgroundcheckdate = $tmpdate;
         $worker->attendschurch_id = Input::get('attendschurch_id');
         $worker->church_id = Input::get('church_id');
         $worker->save();
@@ -137,7 +143,13 @@ class WorkersController extends BaseController {
 		$worker->workphone = Input::get('workphone');
         $worker->email = Input::get('email');
         $worker->tagname = Input::get('tagname');
-        $worker->backgroundcheckdate = Input::get('backgroundcheckdate');
+        $tmpdate = Input::get('backgroundcheckdate');
+        if ($tmpdate) {
+            $tmpdate = date('Y-m-d',(strtotime($tmpdate)));
+        } else {
+            $tmpdate = null;
+        }
+        $worker->backgroundcheckdate = $tmpdate;
         $worker->attendschurch_id = Input::get('attendschurch_id');
         $worker->church_id = Input::get('church_id');
         $worker->save();

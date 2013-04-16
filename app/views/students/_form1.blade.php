@@ -84,7 +84,7 @@
                                                                             {{ Form::label('birthdate', 'BirthDate: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::select('birthdate', array('1' => 'Yes', '0' => 'No'), '0') }}
+                                                                            {{ Form::text('birthdate', $student->getbirthdate()) }}
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -106,7 +106,7 @@
                                                                                 {{ Form::label('homeroom_teacher_id', 'Homeroom Teacher: ') }}
 																			</td>
 																			<td>
-                                                                                {{ Form::select('homeroom_teacher_id', $teacher_options) }}
+                                                                                <div id="ht_loading">{{ Form::select('homeroom_teacher_id', $teacher_options) }}</div>
 																			</td>
 																		   <td class="label">
 																				{{ Form::label('grade_id', 'Grade: ') }}

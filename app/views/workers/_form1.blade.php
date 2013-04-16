@@ -95,10 +95,7 @@
                                                                             {{ Form::label('backgroundcheckdate', 'Background Check Date: ') }}
                                                                         </td>
                                                                         <td>
-                                                                            {{ Form::text('backgroundcheckdate', null, array('style' => 'width: 180px', 'maxlength' => 40)) }}
-																			<a onclick="alert('hi');return false;">
-																				{{ Form::input('image','calendar', null, array('src' => URL::asset('images/calendar.gif'), 'align' => 'absmiddle')) }}
-																			</a>
+                                                                            {{ Form::text('backgroundcheckdate', $worker->getbackgroundcheckdate()) }}
                                                                         </td>
                                                                         <td class="label">
                                                                             {{ Form::label('status', 'Status: ') }}

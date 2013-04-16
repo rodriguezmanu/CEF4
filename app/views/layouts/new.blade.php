@@ -90,12 +90,11 @@
                 </span>Sign Out </span></a></li>
         </ul>
     </div>
-	
+
 	<script type="text/javascript">var BASE = '<?php echo "http://mpemberton.dyndns.org/lois4/" ?>';</script>
 	<script src="{{ URL::asset('js/DataTables-1.9.4/media/js/jquery.js') }}"></script>
 	<script src="{{ URL::asset('js/jquery-ui.js') }}"></script>
 	<script src="{{ URL::asset('js/bootstrap-dropdown.js') }}"></script>
-	<script src="{{ URL::asset('js/application.js') }}"></script>
 	<script src="{{ URL::asset('js/DataTables-1.9.4/media/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ URL::asset('js/DataTables-1.9.4/extras/TableTools/media/js/TableTools.js') }}"></script>
 	@yield('scripts')

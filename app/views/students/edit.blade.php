@@ -30,6 +30,26 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#firstname").focus();
+        $('#birthdate').datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+
+        // perform javascript only when the document
+        // has been fully loaded
+        $('#school_id').change(function(e) {
+            // Get the value
+            id = $(this).val();
+            e.preventDefault();
+
+            $('#homeroom_teacher_id').attr("disabled", "true");
+
+            $.get(BASE+'ajax/teacher-list/'+id, function(data) {
+                $('#homeroom_teacher_id').html(data);
+            }).done(function(data) {
+                $('#homeroom_teacher_id').removeAttr("disabled");
+            });
+        });
     });
 </script>
 @stop

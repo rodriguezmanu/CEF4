@@ -3293,3 +3293,12 @@ table.display tr.even.row_selected td {
 table.display tr.odd.row_selected td {
     background-color: #9FAFD1;
 }
+
+.ui-datepicker { font-size: 9pt !important; line-height: normal; }
+.hasDatepicker {
+    background-image: url(../images/calendar.gif);
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px inset;
+}
+

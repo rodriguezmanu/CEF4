@@ -77,7 +77,13 @@ class StudentsController extends BaseController {
         $student->city = Input::get('city');
         $student->state = Input::get('state');
         $student->zip = Input::get('zip');
-        $student->birthdate = date('Y-m-d',(strtotime(Input::get('birthdate'))));
+        $tmpdate = Input::get('birthdate');
+        if ($tmpdate) {
+            $tmpdate = date('Y-m-d',(strtotime($tmpdate)));
+        } else {
+            $tmpdate = null;
+        }
+        $student->birthdate = $tmpdate;
         $student->grade_id = Input::get('grade_id');
         $student->dismissal_id = Input::get('dismissal_id');
         $student->allergies = Input::get('allergies');
@@ -156,7 +162,13 @@ class StudentsController extends BaseController {
         $student->city = Input::get('city');
         $student->state = Input::get('state');
         $student->zip = Input::get('zip');
-        $student->birthdate =  date('Y-m-d',(strtotime(Input::get('birthdate'))));
+        $tmpdate = Input::get('birthdate');
+        if ($tmpdate) {
+            $tmpdate = date('Y-m-d',(strtotime($tmpdate)));
+        } else {
+            $tmpdate = null;
+        }
+        $student->birthdate = $tmpdate;
         $student->grade_id = Input::get('grade_id');
         $student->dismissal_id = Input::get('dismissal_id');
         $student->allergies = Input::get('allergies');
